@@ -1,7 +1,17 @@
 import React from "react";
 import Item from "./Item";
+import {useState} from "react"
 
 function ShoppingList({ items }) {
+  const [selectedCategory, setSelectedCategory] = useState('All')
+
+  const selectedList = items.filter((item)=>{
+    if(selectedCategory==="All"){
+      return items
+    }else{
+      return item.category === selectedCategory
+    }
+  })
   return (
     <div className="ShoppingList">
       <div className="Filter">
